@@ -7,7 +7,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+    implementation (
+            'org.junit.jupiter:junit-jupiter:5.9.0',
+            "com.codeborne:selenide:6.9.0"
+    )
 
 }
 
