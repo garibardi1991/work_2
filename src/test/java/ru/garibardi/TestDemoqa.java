@@ -3,11 +3,12 @@ package ru.garibardi;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import static com.codeborne.selenide.Browsers.EDGE;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestDemoqa {
 
@@ -16,7 +17,10 @@ public class TestDemoqa {
         Configuration.browser = EDGE;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.holdBrowserOpen = true;
-        Configuration.browserSize = "1920x1080";
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("start-maximized");
+        Configuration.browserCapabilities = options;
+        Configuration.browserSize = null;
         Configuration.pageLoadStrategy = "eager";
     }
 
@@ -39,17 +43,17 @@ public class TestDemoqa {
         $("#subjectsInput").setValue("ma");
         $(byText("Maths")).click();
         $("#hobbiesWrapper").$(byText("Sports")).click();
-
         $("#uploadPicture").uploadFromClasspath("files/IMG_20211118_183446.jpg");
+        $("#currentAddress").setValue("2-y Karavannay 15-4");
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("Haryana")).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Karnal")).click();
 
-//        $("#currentAddress").setValue("2-y Karavannay 15-4");
-//
-//        $("#state").click();
-//        $("#stateCity-wrapper").$(byText("Haryana")).click();
-//
-//        $("#city").click();
-//        $("#stateCity-wrapper").$(byText("Karnal")).click();
-//        $("#submit").click();
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+
+        $("#submit").click();
 
     }
 }
