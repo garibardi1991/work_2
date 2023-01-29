@@ -35,6 +35,12 @@ public class TestDemoqa {
         $(".react-datepicker__year-select").click();
         $(".react-datepicker__year-select").selectOptionContainingText("1991");
         $(".react-datepicker__day react-datepicker__day--025").click();
+        $(".subjects-auto-complete__placeholder css-1wa3eu0-placeholder").setValue("Volgograd");
+        $("#hobbies-checkbox-1").click();
+        $("#hobbies-checkbox-2").click();
+        $("#hobbies-checkbox-3").click();
+
+
     }
 }
 
