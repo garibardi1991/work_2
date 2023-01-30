@@ -38,8 +38,8 @@ public class TestDemoqa {
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue ("8952381104");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOptionContainingText("April");
-        $(".react-datepicker__year-select").selectOptionContainingText("1991");
+        $(".react-datepicker__month-select").selectOption("April");
+        $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__day--025").click();
         $("#subjectsInput").setValue("ma");
         $(byText("Maths")).click();
