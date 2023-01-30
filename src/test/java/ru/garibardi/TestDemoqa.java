@@ -56,6 +56,17 @@ public class TestDemoqa {
 
         $("#submit").click();
 
+         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
+        $(".table").$(byText("Student Name")).parent().lastChild().shouldHave(text("Igor Trubikhov"));
+        $(".table").$(byText("Student Email")).parent().lastChild().shouldHave(text("garibardi@mail.ru"));
+        $(".table").$(byText("Gender")).parent().lastChild().shouldHave(text("Male"));
+        $(".table").$(byText("Mobile")).parent().lastChild().shouldHave(text("8952381104"));
+        $(".table").$(byText("Date of Birth")).parent().lastChild().shouldHave(text("25 April,1991"));
+        $(".table").$(byText("Subjects")).parent().lastChild().shouldHave(text("Maths"));
+        $(".table").$(byText("Hobbies")).parent().lastChild().shouldHave(text("Sports"));
+        $(".table").$(byText("Picture")).parent().lastChild().shouldHave(text("IMG_20211118_183446.jpg"));
+        $(".table").$(byText("Address")).parent().lastChild().shouldHave(text("2-y Karavannay 15-4"));
+        $(".table").$(byText("State and City")).parent().lastChild().shouldHave(text("Haryana Karnal"));
     }
 }
 
