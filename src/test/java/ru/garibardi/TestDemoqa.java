@@ -28,6 +28,7 @@ public class TestDemoqa {
     @Test
     void testDemoga () {
         open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         $("#firstName").setValue ("Igor");
         $("#lastName").setValue ("Trubikhov");
         $("#userEmail").setValue ("garibardi@mail.ru");
