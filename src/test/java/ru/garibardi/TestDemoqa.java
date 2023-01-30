@@ -40,7 +40,7 @@ public class TestDemoqa {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("April");
         $(".react-datepicker__year-select").selectOption("1991");
-        $(".react-datepicker__day--025").click();
+        $(".react-datepicker__day--025::not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("ma");
         $(byText("Maths")).click();
         $("#hobbiesWrapper").$(byText("Sports")).click();
