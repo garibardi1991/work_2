@@ -68,5 +68,6 @@ public class TestDemoqa {
         $(".table").$(byText("Address")).parent().lastChild().shouldHave(text("2-y Karavannay 15-4"));
         $(".table").$(byText("State and City")).parent().lastChild().shouldHave(text("Haryana Karnal"));
     }
+
 }
 
