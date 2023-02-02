@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.edge.EdgeOptions;
 
 import static com.codeborne.selenide.Browsers.EDGE;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -29,6 +31,14 @@ public class TestThreadQA {
         $("#item-1").click();
         $("[aria-label='Expand all']").click();
         $("#tree-node-public").parent().lastChild().click();
+        $("#tree-node-workspace").parent().lastChild().click();
+        $("#item-2").click();
+        $("#yesRadio").parent().lastChild().click();
+        $(".mt-3").shouldHave(text("You have selected"));
+        $(".text-success").shouldHave(text("Yes"));
+        $(".text-success").shouldNotBe(text("Impressive"));
+        $("#item-3").click();
+        $(byText("Cierra")).sibling(3);
     }
 }
 
