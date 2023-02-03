@@ -36,18 +36,13 @@ public class TestDemoqaPageObjects {
                 .setEmail("garibardi@mail.ru")
                 .setGender("Male")
                 .setNumber("8952381104")
-                .setBirthDate("25", "April", "1991");
-
-        $("#subjectsInput").setValue("ma");
-        $(byText("Maths")).click();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#uploadPicture").uploadFromClasspath("files/IMG_20211118_183446.jpg");
-        $("#currentAddress").setValue("2-y Karavannay 15-4");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("Haryana")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Karnal")).click();
-        $("#submit").click();
+                .setBirthDate("25", "April", "1991")
+                .setSubjects("ma","Maths")
+                .setHobbies("Sports")
+                .setPicture("files/IMG_20211118_183446.jpg")
+                .setAddress("2-y Karavannay 15-4")
+                .setState("Haryana")
+                .setCity("Karnal");
 
         pageObjectsTestDemoqa.checkResultsTableVisible()
                 .checkResult("Student Name", "Igor Trubikhov")

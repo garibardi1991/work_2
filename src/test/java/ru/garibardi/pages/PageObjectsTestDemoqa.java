@@ -18,7 +18,14 @@ public class PageObjectsTestDemoqa {
             lastNameInput = $("#lastName"),
             emeilInput = $("#userEmail"),
             genderInput = $("#genterWrapper"),
-            numberInput = $("#userNumber");
+            numberInput = $("#userNumber"),
+            subjectsInput = $("#subjectsInput"),
+            hobbiesInput = $("#hobbiesWrapper"),
+            picturesInput = $("#uploadPicture"),
+            addressInput = $("#currentAddress"),
+            stateInput = $("#stateCity-wrapper"),
+            cityInput = $("#stateCity-wrapper");
+
 
     private final static String TITLE_TEXT = "Student Registration Form";
 
@@ -65,6 +72,48 @@ public class PageObjectsTestDemoqa {
 
         return this;
     }
+
+    public PageObjectsTestDemoqa setSubjects(String value, String maths) {
+        subjectsInput.setValue(value);
+        $(byText(maths)).click();
+
+        return this;
+    }
+
+    public PageObjectsTestDemoqa setHobbies(String value) {
+        hobbiesInput.$(byText(value)).click();
+
+        return this;
+    }
+
+    public PageObjectsTestDemoqa setPicture(String value) {
+        picturesInput.uploadFromClasspath(value);
+
+        return this;
+    }
+
+    public PageObjectsTestDemoqa setAddress(String value) {
+        addressInput.setValue(value);
+
+        return this;
+    }
+
+    public PageObjectsTestDemoqa setState(String value) {
+        $("#state").click();
+        stateInput.$(byText(value)).click();
+
+        return this;
+    }
+
+    public PageObjectsTestDemoqa setCity(String value) {
+        $("#city").click();
+        cityInput.$(byText(value)).click();
+        $("#submit").click();
+
+        return this;
+    }
+
+
 
     public PageObjectsTestDemoqa setBirthDate(String day,String month,String year) {
         $("#dateOfBirthInput").click();
