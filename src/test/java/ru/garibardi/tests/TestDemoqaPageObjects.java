@@ -7,10 +7,6 @@ import org.openqa.selenium.edge.EdgeOptions;
 import ru.garibardi.pages.PageObjectsTestDemoqa;
 
 import static com.codeborne.selenide.Browsers.EDGE;
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 public class TestDemoqaPageObjects {
     PageObjectsTestDemoqa pageObjectsTestDemoqa = new PageObjectsTestDemoqa();
@@ -27,7 +23,6 @@ public class TestDemoqaPageObjects {
         Configuration.pageLoadStrategy = "eager";
     }
 
-
     @Test
     void testDemoga() {
         pageObjectsTestDemoqa.openPage()
@@ -42,15 +37,13 @@ public class TestDemoqaPageObjects {
                 .setPicture("files/IMG_20211118_183446.jpg")
                 .setAddress("2-y Karavannay 15-4")
                 .setState("Haryana")
-                .setCity("Karnal");
+                .setCity("Karnal")
+                .setSubmit();
 
         pageObjectsTestDemoqa.checkResultsTableVisible()
                 .checkResult("Student Name", "Igor Trubikhov")
                 .checkResult("Student Email", "garibardi@mail.ru")
                 .checkResult("Date of Birth", "25 April,1991");
-
-        $(".table-responsive table").shouldHave(text("Igor"), text("Trubikhov"),
-                text("8952381104"));
     }
 
     @Test
@@ -59,15 +52,13 @@ public class TestDemoqaPageObjects {
                 .setFirstName("Igor")
                 .setLastName("Trubikhov")
                 .setGender("Male")
-                .setNumber("8952381104");
+                .setNumber("8952381104")
+                .setSubmit();
 
-        $("#submit").click();
-
-        $(".modal-dialog").should(appear);
-        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-
-        $(".table-responsive table").shouldHave(text("Igor"), text("Trubikhov"),
-                text("8952381104"));
+        pageObjectsTestDemoqa.checkResultsTableVisible()
+                .checkResult("Student Name", "Igor Trubikhov")
+                .checkResult("Gender", "Male")
+                .checkResult("Mobile", "8952381104");
     }
 }
 

@@ -108,7 +108,14 @@ public class PageObjectsTestDemoqa {
     public PageObjectsTestDemoqa setCity(String value) {
         $("#city").click();
         cityInput.$(byText(value)).click();
+
+
+        return this;
+    }
+
+    public PageObjectsTestDemoqa setSubmit() {
         $("#submit").click();
+
 
         return this;
     }
