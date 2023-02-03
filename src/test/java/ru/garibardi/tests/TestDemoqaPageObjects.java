@@ -16,7 +16,7 @@ public class TestDemoqaPageObjects {
     PageObjectsTestDemoqa pageObjectsTestDemoqa = new PageObjectsTestDemoqa();
 
     @BeforeAll
-    static void configure () {
+    static void configure() {
         Configuration.browser = EDGE;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.holdBrowserOpen = true;
@@ -29,14 +29,14 @@ public class TestDemoqaPageObjects {
 
 
     @Test
-    void testDemoga () {
+    void testDemoga() {
         pageObjectsTestDemoqa.openPage()
-        .setFirstName("Igor")
-        .setLastName("Trubikhov")
-        .setEmail("garibardi@mail.ru")
-        .setGender("Male")
-        .setNumber("8952381104")
-        .setBirthDate("25", "April", "1991");
+                .setFirstName("Igor")
+                .setLastName("Trubikhov")
+                .setEmail("garibardi@mail.ru")
+                .setGender("Male")
+                .setNumber("8952381104")
+                .setBirthDate("25", "April", "1991");
 
         $("#subjectsInput").setValue("ma");
         $(byText("Maths")).click();
@@ -50,16 +50,16 @@ public class TestDemoqaPageObjects {
         $("#submit").click();
 
         pageObjectsTestDemoqa.checkResultsTableVisible()
-        .checkResult("Student Name", "Igor Trubikhov")
-        .checkResult("Student Email", "garibardi@mail.ru")
-        .checkResult("Date of Birth", "25 April,1991");
+                .checkResult("Student Name", "Igor Trubikhov")
+                .checkResult("Student Email", "garibardi@mail.ru")
+                .checkResult("Date of Birth", "25 April,1991");
 
         $(".table-responsive table").shouldHave(text("Igor"), text("Trubikhov"),
                 text("8952381104"));
-
+    }
 
     @Test
-    void testDemoga2() {
+    void testDemogaMinimum() {
         pageObjectsTestDemoqa.openPage()
                 .setFirstName("Igor")
                 .setLastName("Trubikhov")
@@ -72,10 +72,7 @@ public class TestDemoqaPageObjects {
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
 
         $(".table-responsive table").shouldHave(text("Igor"), text("Trubikhov"),
-        text("8952381104"));
-
-
+                text("8952381104"));
     }
-
 }
 
