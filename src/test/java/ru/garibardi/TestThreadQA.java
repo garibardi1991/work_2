@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-
 import static com.codeborne.selenide.Browsers.CHROME;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -39,6 +38,8 @@ public class TestThreadQA {
         $(".text-success").shouldHave(text("Yes"));
         $("#item-2").sibling(0).click();
         $("#item-2").preceding(1).click();
+        $("#item-7").click();
+
     }
 }
 
