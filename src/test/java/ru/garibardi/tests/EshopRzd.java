@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class EshopRzd {
 
     @BeforeAll
-    static void configure () {
+    static void configure() {
         Configuration.browser = CHROME;
     }
 
@@ -22,7 +22,7 @@ public class EshopRzd {
     }
 
     @Test
-    void openeshop () {
+    void openeshop() {
         open("https://eshoprzd.ru/home");
         $("#login-btn").click();
         $("[ng-click*='showLoginForm']").should(appear);

@@ -25,6 +25,7 @@ public class TestDemoqaPageObjects {
 
     @Test
     void testDemoga() {
+
         pageObjectsTestDemoqa.openPage()
                 .setFirstName("Igor")
                 .setLastName("Trubikhov")
@@ -32,13 +33,17 @@ public class TestDemoqaPageObjects {
                 .setGender("Male")
                 .setNumber("8952381104")
                 .setBirthDate("25", "April", "1991")
-                .setSubjects("ma","Maths")
+                .setSubjects("ma", "Maths")
                 .setHobbies("Sports")
                 .setPicture("files/IMG_20211118_183446.jpg")
                 .setAddress("2-y Karavannay 15-4")
                 .setState("Haryana")
                 .setCity("Karnal")
-                .setSubmit();
+                .setSubmit()
+                .checkResultsTableVisible()
+                .checkResult("Student Name", "Igor Trubikhov")
+                .checkResult("Student Email", "garibardi@mail.ru")
+                .checkResult("Date of Birth", "25 April,1991");
 
         pageObjectsTestDemoqa.checkResultsTableVisible()
                 .checkResult("Student Name", "Igor Trubikhov")

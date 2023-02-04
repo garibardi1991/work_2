@@ -10,10 +10,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PageObjectsTestDemoqa {
 
-    private CalendarComponent calendarComponent = new CalendarComponent();
-    private ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
+    private final CalendarComponent calendarComponent = new CalendarComponent();
+    private final ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
 
-    private SelenideElement
+    private final SelenideElement
             firsNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emeilInput = $("#userEmail"),
@@ -43,6 +43,7 @@ public class PageObjectsTestDemoqa {
 
         return this;
     }
+
     public PageObjectsTestDemoqa clearFirstName() {
         firsNameInput.clear();
 
@@ -121,8 +122,7 @@ public class PageObjectsTestDemoqa {
     }
 
 
-
-    public PageObjectsTestDemoqa setBirthDate(String day,String month,String year) {
+    public PageObjectsTestDemoqa setBirthDate(String day, String month, String year) {
         $("#dateOfBirthInput").click();
         calendarComponent.setDate(day, month, year);
 
@@ -136,8 +136,15 @@ public class PageObjectsTestDemoqa {
     }
 
     public PageObjectsTestDemoqa checkResult(String key, String value) {
-        resultsTableComponent.checkResult(key,value);
+        resultsTableComponent.checkResult(key, value);
 
         return this;
     }
+
+//    public boolean compareFile() throws IOException {
+//        var downloadedFile = $("#downloadButton").download();
+//        var etalon = new File("src/test/resources/files/sticker.png");
+//        return FileUtils.contentEquals(downloadedFile, etalon);
+//
+//    }
 }

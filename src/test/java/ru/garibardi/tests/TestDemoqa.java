@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class TestDemoqa {
 
     @BeforeAll
-    static void configure () {
+    static void configure() {
         Configuration.browser = EDGE;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.holdBrowserOpen = true;
@@ -26,17 +26,17 @@ public class TestDemoqa {
 
 
     @Test
-    void testDemoga () {
+    void testDemoga() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        $("#firstName").setValue ("Igor");
-        $("#lastName").setValue ("Trubikhov");
-        $("#userEmail").setValue ("garibardi@mail.ru");
+        $("#firstName").setValue("Igor");
+        $("#lastName").setValue("Trubikhov");
+        $("#userEmail").setValue("garibardi@mail.ru");
         $("#genterWrapper").$(byText("Male")).click();
         $("#genterWrapper").$(byText("Female")).click();
         $("#genterWrapper").$(byText("Other")).click();
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue ("8952381104");
+        $("#userNumber").setValue("8952381104");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("April");
         $(".react-datepicker__year-select").selectOption("1991");
@@ -56,7 +56,7 @@ public class TestDemoqa {
 
         $("#submit").click();
 
-         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
+        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
         $(".table").$(byText("Student Name")).parent().lastChild().shouldHave(text("Igor Trubikhov"));
         $(".table").$(byText("Student Email")).parent().lastChild().shouldHave(text("garibardi@mail.ru"));
         $(".table").$(byText("Gender")).parent().lastChild().shouldHave(text("Male"));

@@ -6,7 +6,8 @@ public class HelloWorld {
         String stringThatShouldBeDisplayedInConsole = "Hello World";
 
         // mast have
-        boolean flag = true; boolean flag0 = false;
+        boolean flag = true;
+        boolean flag0 = false;
         byte aByte; // 8 бит
         short aShort; // 16 бит
 
@@ -30,9 +31,7 @@ public class HelloWorld {
         int b = 15;
 
 
-
-
-        System.out.println(a-b);
+        System.out.println(a - b);
     }
 
 }
