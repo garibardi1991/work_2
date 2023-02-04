@@ -1,12 +1,18 @@
 package ru.garibardi.tests;
 
 import com.codeborne.selenide.Configuration;
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.edge.EdgeOptions;
 import ru.garibardi.pages.PageObjectsTestDemoqa;
 
+import java.io.File;
+import java.io.IOException;
+
 import static com.codeborne.selenide.Browsers.EDGE;
+import static com.codeborne.selenide.Selenide.$;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestDemoqaPageObjects {
     PageObjectsTestDemoqa pageObjectsTestDemoqa = new PageObjectsTestDemoqa();
@@ -24,7 +30,7 @@ public class TestDemoqaPageObjects {
     }
 
     @Test
-    void testDemoga() {
+    void testDemoga() throws IOException {
 
         pageObjectsTestDemoqa.openPage()
                 .setFirstName("Igor")
@@ -45,10 +51,13 @@ public class TestDemoqaPageObjects {
                 .checkResult("Student Email", "garibardi@mail.ru")
                 .checkResult("Date of Birth", "25 April,1991");
 
-        pageObjectsTestDemoqa.checkResultsTableVisible()
-                .checkResult("Student Name", "Igor Trubikhov")
-                .checkResult("Student Email", "garibardi@mail.ru")
-                .checkResult("Date of Birth", "25 April,1991");
+        var screenshot = $(".table-responsive").screenshot();
+//        var filename = UUID.randomUUID().toString();
+//        var targetFile = new File("src/test/resources/files/" + filename + ".jpg");
+//        FileUtils.copyFile(screenshot, targetFile);
+
+        var isEqual = FileUtils.contentEquals(screenshot, new File("src/test/resources/files/template.jpg"));
+        assertTrue(isEqual);
     }
 
     @Test
