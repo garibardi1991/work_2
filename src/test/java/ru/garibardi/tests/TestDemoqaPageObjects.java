@@ -1,44 +1,29 @@
 package ru.garibardi.tests;
 
-import com.codeborne.selenide.Configuration;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.edge.EdgeOptions;
 import ru.garibardi.pages.PageObjectsTestDemoqa;
 
 import java.io.File;
 import java.io.IOException;
 
-import static com.codeborne.selenide.Browsers.EDGE;
 import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestDemoqaPageObjects {
+public class TestDemoqaPageObjects extends TestBaseDemoQa {
     PageObjectsTestDemoqa pageObjectsTestDemoqa = new PageObjectsTestDemoqa();
 
-    @BeforeAll
-    static void configure() {
-        Configuration.browser = EDGE;
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true;
-        EdgeOptions options = new EdgeOptions();
-        options.addArguments("start-maximized");
-        Configuration.browserCapabilities = options;
-        Configuration.browserSize = null;
-        Configuration.pageLoadStrategy = "eager";
-    }
 
     @Test
     void testDemoga() throws IOException {
 
         pageObjectsTestDemoqa.openPage()
-                .setFirstName("Igor")
-                .setLastName("Trubikhov")
-                .setEmail("garibardi@mail.ru")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
                 .setGender("Male")
-                .setNumber("8952381104")
-                .setBirthDate("25", "April", "1991")
+                .setNumber(phone)
+                .setBirthDate(day, mount, year)
                 .setSubjects("ma", "Maths")
                 .setHobbies("Sports")
                 .setPicture("files/IMG_20211118_183446.jpg")
@@ -62,11 +47,12 @@ public class TestDemoqaPageObjects {
 
     @Test
     void testDemogaMinimum() {
+
         pageObjectsTestDemoqa.openPage()
-                .setFirstName("Igor")
-                .setLastName("Trubikhov")
+                .setFirstName(firstName)
+                .setLastName(lastName)
                 .setGender("Male")
-                .setNumber("8952381104")
+                .setNumber(phone)
                 .setSubmit();
 
         pageObjectsTestDemoqa.checkResultsTableVisible()
