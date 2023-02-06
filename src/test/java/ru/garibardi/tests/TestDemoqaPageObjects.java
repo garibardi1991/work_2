@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestDemoqaPageObjects extends TestBaseDemoQa {
     PageObjectsTestDemoqa pageObjectsTestDemoqa = new PageObjectsTestDemoqa();
 
-
     @Test
     void testDemoga() throws IOException {
 
@@ -27,7 +26,7 @@ public class TestDemoqaPageObjects extends TestBaseDemoQa {
                 .setSubjects("ma", "Maths")
                 .setHobbies("Sports")
                 .setPicture("files/IMG_20211118_183446.jpg")
-                .setAddress("2-y Karavannay 15-4")
+                .setAddress(Address)
                 .setState("Haryana")
                 .setCity("Karnal")
                 .setSubmit()

@@ -1,6 +1,7 @@
 package ru.garibardi.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.edge.EdgeOptions;
 
@@ -8,13 +9,16 @@ import static com.codeborne.selenide.Browsers.EDGE;
 
 public class TestBaseDemoQa {
 
- String firstName = "Igor",
-            lastName = "Trubikhov",
-            day = "25",
-            mount = "April",
-            year = "1991",
-            email = "garibardi@mail.ru",
-            phone = "8952381104";
+    Faker faker = new Faker();
+    String Address = faker.address().fullAddress();
+    String firstName = faker.name().firstName();
+    String lastName = faker.name().lastName();
+    String day = "25";
+    String mount = "April";
+    String year = "1991";
+    String email = faker.internet().emailAddress();
+    String phone = faker.phoneNumber().subscriberNumber(10);
+
 
     @BeforeAll
     static void configure() {
