@@ -9,15 +9,7 @@ import static com.codeborne.selenide.Browsers.EDGE;
 
 public class TestBaseDemoQa {
 
-    Faker faker = new Faker();
-    String Address = faker.address().fullAddress();
-    String firstName = faker.name().firstName();
-    String lastName = faker.name().lastName();
-    String day = "25";
-    String mount = "April";
-    String year = "1991";
-    String email = faker.internet().emailAddress();
-    String phone = faker.phoneNumber().subscriberNumber(10);
+
 
 
     @BeforeAll
