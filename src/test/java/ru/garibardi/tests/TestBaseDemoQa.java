@@ -1,7 +1,6 @@
 package ru.garibardi.tests;
 
 import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.edge.EdgeOptions;
 

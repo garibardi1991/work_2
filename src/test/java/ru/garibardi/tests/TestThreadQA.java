@@ -27,6 +27,7 @@ public class TestThreadQA {
         Configuration.browserCapabilities = options;
         Configuration.browserSize = null;
         Configuration.pageLoadStrategy = "eager";
+//        Configuration.fileDownload = FileDownloadMode.PROXY;
     }
 
     @Test
