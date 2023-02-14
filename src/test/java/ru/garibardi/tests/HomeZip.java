@@ -16,7 +16,7 @@ public class HomeZip {
     @Test
     void zipXlsx()  {
         InputStream is = cl.getResourceAsStream("ZipArchiv.zip");
-        ZipInputStream zis = new ZipInputStream(is);
+        var zis = new ZipInputStream(is);
         ZipEntry entry;
         while ((entry = zis.getNextEntry()) != null) {
             String name = entry.getName();
@@ -32,7 +32,7 @@ public class HomeZip {
     @Test
     void zipCsv()  {
         InputStream is = cl.getResourceAsStream("ZipArchiv2.zip");
-        ZipInputStream zis = new ZipInputStream(is);
+        var zis = new ZipInputStream(is);
         ZipEntry entry;
         while ((entry = zis.getNextEntry()) != null) {
             String name = entry.getName();
@@ -47,7 +47,7 @@ public class HomeZip {
     @Test
     void zipPdf()  {
         InputStream is = cl.getResourceAsStream("ZipArchiv3.zip");
-        ZipInputStream zis = new ZipInputStream(is);
+        var zis = new ZipInputStream(is);
         ZipEntry entry;
         while ((entry = zis.getNextEntry()) != null) {
             String name = entry.getName();
