@@ -57,13 +57,14 @@ public class FileParseTest {
     @SneakyThrows
     @Test
     void zipTest ()  {
-        InputStream is = cl.getResourceAsStream("Документ-2023-01-21-121941.7z");
+        InputStream is = cl.getResourceAsStream("ZipArchiv.zip");
         var zis = new ZipInputStream(is);
         ZipEntry entry;
         while ((entry = zis.getNextEntry()) != null); {
             String entryName = entry.getName();
+
         }
-        }
+    }
 
     @SneakyThrows
     @Test
