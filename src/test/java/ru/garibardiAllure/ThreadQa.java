@@ -17,7 +17,7 @@ public class ThreadQa {
 
     @BeforeAll
     static void configure() {
-        Configuration.browser = CHROME;
+//        Configuration.browser = CHROME;
         Configuration.headless = true;
 //        ChromeOptions options = new ChromeOptions();
 //        options.addArguments("start-maximized");
