@@ -28,7 +28,6 @@ public class ThreadQa {
     }
 
     @Test
-    @Tag("threadqa")
     @Feature("Проверка сайта ThreadQA")
     @Story("Проверяем раздел Elements")
     @Owner("trubikhoviv")
