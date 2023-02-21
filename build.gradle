@@ -45,6 +45,9 @@ dependencies {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED", "standard_out"
+    }
 }
 
 tasks.withType(JavaCompile) {
@@ -56,3 +59,4 @@ task threadqa(type: Test) {
         includeTags 'threadqa'
     }
 }
+
