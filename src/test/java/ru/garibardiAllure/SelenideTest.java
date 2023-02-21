@@ -19,7 +19,7 @@ public class SelenideTest {
     @Test
     @Tag("threadqa")
     public void testSelenide() {
-        Configuration.headless = true;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         open("https://github.com/");
