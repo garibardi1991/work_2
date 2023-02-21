@@ -1,7 +1,9 @@
 package ru.garibardiAllure;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -13,10 +15,13 @@ import static org.openqa.selenium.By.partialLinkText;
 
 public class SelenideTest {
 
+
+
     @Test
     @Tag("threadqa")
     public void testSelenide() {
-
+        Configuration.browserVersion = "105";
+        Configuration.headless = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         open("https://github.com/");
