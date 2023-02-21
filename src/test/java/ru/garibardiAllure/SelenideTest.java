@@ -19,7 +19,6 @@ public class SelenideTest {
     @Test
     @Tag("threadqa")
     public void testSelenide() {
-        Configuration.browserVersion = "105";
         Configuration.headless = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
 
