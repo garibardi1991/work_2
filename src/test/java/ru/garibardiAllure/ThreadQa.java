@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Browsers.CHROME;
 import static com.codeborne.selenide.Condition.text;
@@ -20,11 +19,11 @@ public class ThreadQa {
     static void configure() {
         Configuration.browser = CHROME;
         Configuration.headless = true;
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        Configuration.browserCapabilities = options;
-        Configuration.browserSize = null;
-        Configuration.pageLoadStrategy = "eager";
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("start-maximized");
+//        Configuration.browserCapabilities = options;
+//        Configuration.browserSize = null;
+//        Configuration.pageLoadStrategy = "eager";
 //        Configuration.fileDownload = FileDownloadMode.PROXY;
     }
 
