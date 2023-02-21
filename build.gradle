@@ -50,3 +50,9 @@ tasks.withType(Test) {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+task threadqa(type: Test) {
+    useJUnitPlatform {
+        includeTags 'threadqa'
+    }
+}
