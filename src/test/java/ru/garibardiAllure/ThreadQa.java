@@ -1,13 +1,16 @@
 package ru.garibardiAllure;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import ru.garibardi.helpers.Attach;
 
-import static com.codeborne.selenide.Browsers.CHROME;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -17,14 +20,22 @@ public class ThreadQa {
 
     @BeforeAll
     static void configure() {
-//        Configuration.browser = CHROME;
-        Configuration.headless = true;
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("start-maximized");
-//        Configuration.browserCapabilities = options;
-//        Configuration.browserSize = null;
-//        Configuration.pageLoadStrategy = "eager";
-//        Configuration.fileDownload = FileDownloadMode.PROXY;
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        Configuration.browserCapabilities = capabilities;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 
     @Test

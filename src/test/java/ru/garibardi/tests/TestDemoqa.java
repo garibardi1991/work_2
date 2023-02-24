@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.garibardi.helpers.Attach;
 
 import static com.codeborne.selenide.Browsers.EDGE;
@@ -20,15 +21,20 @@ public class TestDemoqa {
 
     @BeforeAll
     static void configure() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("browserName", "chrome");
+//        capabilities.setCapability("browserVersion", "100.0");
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        Configuration.browserCapabilities = capabilities;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 //        Configuration.browser = EDGE;
-//        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.baseUrl = "https://demoqa.com";
 //        Configuration.holdBrowserOpen = true;
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        Configuration.browserCapabilities = options;
 //        Configuration.browserSize = null;
 //        Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
     }
 
@@ -44,8 +50,7 @@ public class TestDemoqa {
     @Test
     @Tag("testDemoqa")
     void testDemoga() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
