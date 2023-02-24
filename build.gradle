@@ -54,9 +54,9 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-task testDemoqa(type: Test) {
+task testThreadQA(type: Test) {
     useJUnitPlatform {
-        includeTags 'testDemoqa'
+        includeTags 'testThreadQA'
     }
 }
 

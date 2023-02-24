@@ -4,10 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.garibardi.helpers.Attach;
 
@@ -39,6 +36,7 @@ public class ThreadQa {
     }
 
     @Test
+    @Tag("testThreadQA")
     @Feature("Проверка сайта ThreadQA")
     @Story("Проверяем раздел Elements")
     @Owner("trubikhoviv")
