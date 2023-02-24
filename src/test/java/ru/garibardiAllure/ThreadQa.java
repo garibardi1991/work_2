@@ -23,7 +23,9 @@ public class ThreadQa {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         Configuration.browserCapabilities = capabilities;
+        Configuration.browserSize = "1920x1080";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
 
     }
 
