@@ -1,9 +1,14 @@
 package ru.garibardi.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.edge.EdgeOptions;
+import ru.garibardi.helpers.Attach;
 
 import static com.codeborne.selenide.Browsers.EDGE;
 import static com.codeborne.selenide.Condition.text;
@@ -22,11 +27,22 @@ public class TestDemoqa {
         Configuration.browserCapabilities = options;
         Configuration.browserSize = null;
         Configuration.pageLoadStrategy = "eager";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 
 
     @Test
+    @Tag("testDemoqa")
     void testDemoga() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         $("#firstName").setValue("Igor");
