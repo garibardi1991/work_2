@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import ru.garibardi.helpers.Attach;
 
@@ -19,15 +20,16 @@ public class TestDemoqa {
 
     @BeforeAll
     static void configure() {
-        Configuration.browser = EDGE;
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true;
-        EdgeOptions options = new EdgeOptions();
+//        Configuration.browser = EDGE;
+//        Configuration.baseUrl = "https://demoqa.com";
+//        Configuration.holdBrowserOpen = true;
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         Configuration.browserCapabilities = options;
-        Configuration.browserSize = null;
-        Configuration.pageLoadStrategy = "eager";
+//        Configuration.browserSize = null;
+//        Configuration.pageLoadStrategy = "eager";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
     }
 
     @AfterEach
@@ -43,7 +45,9 @@ public class TestDemoqa {
     @Tag("testDemoqa")
     void testDemoga() {
         SelenideLogger.addListener("allure", new AllureSelenide());
-        open("/automation-practice-form");
+        open("https://demoqa.com/automation-practice-form");
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         $("#firstName").setValue("Igor");
         $("#lastName").setValue("Trubikhov");
@@ -67,8 +71,6 @@ public class TestDemoqa {
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Karnal")).click();
 
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
 
         $("#submit").click();
 
