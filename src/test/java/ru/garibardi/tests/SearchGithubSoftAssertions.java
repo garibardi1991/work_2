@@ -37,4 +37,14 @@ public class SearchGithubSoftAssertions {
 
     }
 
+    @Test
+    void SearchEnterprise () {
+        open("https://github.com/");
+        $(withText("Solutions")).hover();
+        $(withText("Enterprise")).click();
+        $("h1").shouldHave(text("Build like the best"));
+
+    }
+
+
 }
