@@ -42,7 +42,7 @@ public class SearchGithubSoftAssertions {
         open("https://github.com/");
         $(withText("Solutions")).hover();
         $(withText("Enterprise")).click();
-        $("h1").shouldHave(text("Build like the best"));
+        $(".h1-mktg.mb-3").shouldHave(text("Build like the best"));
 
     }
 
