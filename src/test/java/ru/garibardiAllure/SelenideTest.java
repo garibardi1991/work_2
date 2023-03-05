@@ -42,6 +42,7 @@ public class SelenideTest {
     @Tag("testselenide")
     @Feature("Проверка сайта Github")
     @Story("Проверяем репозиторий electrichestvo/qa_guru_15_5")
+    @Owner("trubikhoviv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://github.com/")
     @DisplayName("Проверка отображения репозитория")
