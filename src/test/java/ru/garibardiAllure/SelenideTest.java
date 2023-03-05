@@ -53,7 +53,7 @@ public class SelenideTest {
         step("Вводим в поле поиска данные", () ->
         $("[name = q]").setValue("electrichestvo/qa_guru_15_5").pressEnter());
 
-        step("Кликаем по наденным данным", () ->
+        step("Кликаем по найденным данным", () ->
         $(linkText("electrichestvo/qa_guru_15_5")).click());
 
         step("Проверяем данные на странице", () ->
