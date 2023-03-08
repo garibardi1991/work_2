@@ -7,6 +7,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.garibardi.helpers.Attach;
+import ru.garibardiAllure.properties.Property;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,9 +24,12 @@ public class ThreadQa {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
+        Configuration.browser = Property.browser();
+        Configuration.browserVersion = Property.browserVersion();
+        Configuration.browserSize = Property.browserSize();
+        if (!Property.remoteUrl().equals("")) {
+            Configuration.remote = Property.remoteUrl();
+        }
     }
 
     @AfterEach
