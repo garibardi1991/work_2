@@ -1,0 +1,7 @@
+
+Garibardi_bot
+-1001689562124
+https://api.telegram.org/bot5956062624:AAE-8rKQtgJZP_dJopiA26HIEu6KefQ4C70/getUpdates | jq .message.chat.id
+
+
+curl.exe -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-1001689562124", "text": "This is a test from curl", "disable_notification": true}' https://api.telegram.org/bot5956062624:AAE-8rKQtgJZP_dJopiA26HIEu6KefQ4C70/sendMessage
