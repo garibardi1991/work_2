@@ -80,7 +80,7 @@ public class ThreadQa {
     @Owner("trubikhoviv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "http://85.192.34.140:8081/")
-    @DisplayName("Проверка работы раздела Check Box")
+    @DisplayName("Проверка работы раздела Forms")
     void testthreadQAForms() {
         step("Открываем ThreadQA", () ->
                 open("http://85.192.34.140:8081/")
