@@ -100,7 +100,7 @@ public class ThreadQa {
         step("Нажимаем Submit", () ->
                 $("#submit").click()
         );
-        step("Проверяем что на странице есть workspace", () -> {
+        step("Проверяем  заполненную форму", () -> {
             $(".modal-header").shouldHave(text("Thanks for submitting the form"));
             $(".table").$(byText("Student Name")).parent().lastChild().shouldHave(text("Igor Trubikhov"));
             $(".table").$(byText("Gender")).parent().lastChild().shouldHave(text("Male"));
