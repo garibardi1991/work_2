@@ -1,4 +1,4 @@
-package ru.garibardiAllure.properties;
+package ru.garibardiAllure.config;
 
 public class Property {
     public static String browser() {

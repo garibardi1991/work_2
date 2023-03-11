@@ -7,7 +7,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.garibardi.helpers.Attach;
-import ru.garibardiAllure.properties.Property;
+import ru.garibardiAllure.config.Property;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
