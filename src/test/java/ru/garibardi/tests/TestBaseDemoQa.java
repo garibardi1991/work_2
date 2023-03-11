@@ -8,9 +8,6 @@ import static com.codeborne.selenide.Browsers.EDGE;
 
 public class TestBaseDemoQa {
 
-
-
-
     @BeforeAll
     static void configure() {
         Configuration.browser = EDGE;

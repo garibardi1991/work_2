@@ -1,3 +1,5 @@
+import static sun.security.util.Event.report
+
 plugins {
             id 'java-library'
             id "io.freefair.lombok" version "6.0.0-m2"
@@ -64,6 +66,20 @@ task testThreadQA(type: Test) {
     task testselenide(type: Test) {
         useJUnitPlatform {
             includeTags 'testselenide'
+        }
+    }
+
+    task security(type: Test) {
+        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+        systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
+        systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
+        systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
+        systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'same_thread'
+        systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'dynamic'
+        systemProperty 'junit.jupiter.execution.parallel.config.dynamic.factor', '1'
+
+        useJUnitPlatform {
+            includeTags 'security'
         }
     }
 }
