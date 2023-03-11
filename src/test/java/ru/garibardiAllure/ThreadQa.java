@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
-import lombok.val;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.garibardi.helpers.Attach;
@@ -13,9 +12,9 @@ import ru.garibardiAllure.properties.Property;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static org.openqa.selenium.By.linkText;
 
 @Tag("testThreadQA")
 public class ThreadQa {
