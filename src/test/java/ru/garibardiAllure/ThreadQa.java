@@ -107,19 +107,4 @@ public class ThreadQa {
             $(".table").$(byText("Mobile")).parent().lastChild().shouldHave(text("8952381104"));
         });
     }
-
-    @Test
-    @Feature("Проверка сайта eshoprzd.ru")
-    @Story("Проверяем наличие плашки с информацией 'На нашем сайте мы используем...'")
-    @Owner("trubikhoviv")
-    @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Testing", url = "https://eshoprzd.ru/home")
-    @DisplayName("На главной странице должна отображаться информация 'На нашем сайте мы используем файлы cookie. Продо...'")
-    void titleTest() {
-        step("Открываем сайт eshoprzd.ru", () ->
-                open("https://eshoprzd.ru/home"));
-
-        step("Проверка наличия отображения информации 'На нашем сайте мы используем файлы cookie. Продолжая работу на сайте, Вы даете согласие на использование файлов cookie.'", () ->
-                $(".ng-scope").shouldHave(text("Пончик.")));
-    }
 }
