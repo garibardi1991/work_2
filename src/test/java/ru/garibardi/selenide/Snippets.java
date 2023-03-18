@@ -1,6 +1,8 @@
 package ru.garibardi.selenide;
 
 import com.codeborne.selenide.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
 import org.openqa.selenium.*;
 
 import java.io.*;
@@ -211,5 +213,26 @@ public class Snippets {
         executeJavaScript("alert(arguments[0]+arguments[1])", "abc", 12);
         long fortytwo = executeJavaScript("return arguments[0]*arguments[1];", 6, 7);
 
+    }
+
+    @Test
+    @DisabledIfSystemProperty(named = "selenide.remote", matches = "http.*", disabledReason = "Clipboard not supported on Selenium Grid yet")
+        //@Disabled
+        //@EnabledIfSystemProperty(named = "environment", matches = "staging")
+    void clipboards() {
+        open("https://moskva.mts.ru/personal");
+        Selenide.clipboard().setText("1234324234");
+        $("[name=number]").sendKeys(Keys.COMMAND + "v");
+        $("[name=number]").shouldHave(value("(123) 432-42-34"));
+
+        // open page with repository
+        open("https://github.com/selenide/selenide.git");
+        // find element with copy url - function
+        // click copy-button
+
+        // new Assertion in Selenide
+        Selenide.clipboard().shouldHave(ClipboardConditions.content("https://github.com/selenide/selenide.git"));
+        // old comparison
+        // Assertions.assertEquals(Selenide.clipboard().getText(), "https://github.com/selenide/selenide.git");
     }
 }
