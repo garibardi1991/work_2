@@ -74,4 +74,91 @@ public class ReqresInTests {
                 .statusCode(400)
                 .body("error", is("Missing password"));
     }
+
+    @Test
+    void singleResourceTest() {
+        given()
+                .log().uri()
+                .when()
+                .get("https://reqres.in/api/unknown/2")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("data.id", is(2))
+                .body("data.name", is("fuchsia rose"))
+                .body("data.year", is(2001))
+                .body("data.color", is("#C74375"))
+                .body("data.pantone_value", is("17-2031"))
+                .body("support.url", is("https://reqres.in/#support-heading"))
+                .body("support.text", is("To keep ReqRes free, contributions towards server costs are appreciated!"));
+
+    }
+
+    @Test
+    void singleUserNotFoundTest() {
+        given()
+                .log().uri()
+                .when()
+                .get("https://reqres.in/api/users/23")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(404);
+
+    }
+
+    @Test
+    void registerSuccessfulTest() {
+        String data = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"pistol\" }";
+
+        given()
+                .log().uri()
+                .contentType(JSON)
+                .body(data)
+                .when()
+                .post("https://reqres.in/api/register")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("id", is(4))
+                .body("token", is("QpwL5tke4Pnpja7X4"));
+
+    }
+
+    @Test
+    void registerUnsuccessfulTest() {
+        String data = "{ \"email\": \"sydney@fife\"}";
+
+        given()
+                .log().uri()
+                .contentType(JSON)
+                .body(data)
+                .when()
+                .post("https://reqres.in/api/register")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(400)
+                .body("error", is("Missing password"));
+    }
+
+    @Test
+    void updateTest() {
+        String data = "{ \"name\": \"morpheus\", \"job\": \"zion resident\"}";
+
+        given()
+                .log().uri()
+                .contentType(JSON)
+                .body(data)
+                .when()
+                .put("https://reqres.in/api/users/2")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("name", is("morpheus"))
+                .body("job", is("zion resident"));
+    }
 }
