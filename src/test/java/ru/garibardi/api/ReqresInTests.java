@@ -1,4 +1,4 @@
-package ru.garibardiAllure.api;
+package ru.garibardi.api;
 
 import org.junit.jupiter.api.Test;
 
