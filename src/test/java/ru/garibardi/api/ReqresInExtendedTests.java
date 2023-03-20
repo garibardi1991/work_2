@@ -1,5 +1,6 @@
 package ru.garibardi.api;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.garibardi.models.LoginBodyLombokModel;
 import ru.garibardi.models.LoginBodyPojoModel;
@@ -12,7 +13,7 @@ import static io.restassured.http.ContentType.JSON;
 
 public class ReqresInExtendedTests {
 
-
+@Tag("ReqrasIn")
     @Test
     void loginWithPojoModelTest() {
         LoginBodyPojoModel body = new LoginBodyPojoModel();

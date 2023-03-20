@@ -69,8 +69,7 @@ task testThreadQA(type: Test) {
         }
     }
 
-    task security(type: Test) {
-        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    task ReqrasIn(type: Test) {
         systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
         systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
         systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
@@ -79,7 +78,7 @@ task testThreadQA(type: Test) {
         systemProperty 'junit.jupiter.execution.parallel.config.dynamic.factor', '1'
 
         useJUnitPlatform {
-            includeTags 'security'
+            includeTags 'ReqrasIn'
         }
     }
 }
