@@ -9,10 +9,10 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static ru.garibardi.specs.LoginSpecs.*;
 
-
+@Tag("ReqresTest")
 public class ReqresInTestsHomeWork {
 
-@Tag("ReqresTest")
+
     @Test
     void singleResourceTest() {
         given()
