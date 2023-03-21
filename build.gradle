@@ -63,6 +63,7 @@ task testThreadQA(type: Test) {
     useJUnitPlatform {
         includeTags 'testThreadQA'
     }
+}
 
     task testselenide(type: Test) {
         useJUnitPlatform {
@@ -70,16 +71,22 @@ task testThreadQA(type: Test) {
         }
     }
 
-    task ReqrasIn(type: Test) {
-        systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
-        systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
-        systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
-        systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'same_thread'
-        systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'dynamic'
-        systemProperty 'junit.jupiter.execution.parallel.config.dynamic.factor', '1'
-
-        useJUnitPlatform {
-            includeTags 'ReqrasIn'
+        task ReqresTest(type: Test) {
+            useJUnitPlatform {
+                includeTags 'ReqresTest'
+            }
         }
-    }
-}
+
+
+        task ReqrasIn(type: Test) {
+            systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
+            systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
+            systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
+            systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'same_thread'
+            systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'dynamic'
+            systemProperty 'junit.jupiter.execution.parallel.config.dynamic.factor', '1'
+
+            useJUnitPlatform {
+                includeTags 'ReqrasIn'
+            }
+        }
