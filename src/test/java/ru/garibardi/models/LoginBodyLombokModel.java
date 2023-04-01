@@ -6,5 +6,5 @@ import lombok.Data;
 public class LoginBodyLombokModel {
     //  "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\" }";
 
-    private String email, password, name, job;
+    private String email, password, name, job, id, username, firstName, lastName, phone, userStatus;
 }
